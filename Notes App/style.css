@@ -1,0 +1,101 @@
+@import url("https://fonts.googleapis.com/css?family=Muli&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Muli", sans-serif;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding-top: 3rem;
+  background-color: #7bdaf3;
+}
+
+.add {
+  position: fixed;
+  top: 1rem;
+  left: 1.2rem;
+  background-color: #9ec862;
+  border-radius: 3px;
+  padding: 0.5rem 1rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+.add:active {
+  transform: scale(0.95);
+}
+
+.note {
+  background-color: #fff;
+  position: relative;
+  box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.1);
+  margin: 30px 20px;
+  height: 400px;
+  width: 400px;
+  border-radius: 12px 12px 0 0;
+}
+
+.note .tools {
+  background-color: #9ec862;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.5rem;
+  border-radius: 10px 10px 0 0;
+}
+
+.note .tools button {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-left: 0.5rem;
+}
+
+.fa-edit:active,
+.fa-trash-alt:active {
+  transform: scale(0.95);
+}
+
+.note textarea {
+  outline: none;
+  font-family: inherit;
+  font-size: 1.2rem;
+  border: none;
+  height: calc(100% - 40px);
+  width: 100%;
+  padding: 20px;
+  resize: none;
+}
+
+.main {
+  padding: 20px;
+}
+
+.save {
+  display: flex;
+  background-color: #9ec862;
+  color: #fff;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  height: 40px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.save:hover {
+  font-size: 1.2rem;
+}
+
+.save:active {
+  font-size: 0.9rem;
+}
+
+.hidden {
+  display: none;
+}
