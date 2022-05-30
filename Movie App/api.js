@@ -4,7 +4,7 @@ const BASE_URL = "https://api.themoviedb.org/3";
 
 export const IMG_PATH = "https://image.tmdb.org/t/p/w1280";
 
-export async function getPoster(poster_path) {
+export function getPoster(poster_path) {
   return IMG_PATH + poster_path;
 }
 
