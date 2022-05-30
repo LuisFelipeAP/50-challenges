@@ -2,7 +2,7 @@
   "name": "50days",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": ".",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -20,13 +20,23 @@
     "eslint-plugin-unicorn": "^42.0.0"
   },
   "devDependencies": {
-    "eslint": "^8.16.0"
+    "@babel/preset-env": "^7.18.2",
+    "@testing-library/dom": "^8.13.0",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/user-event": "^14.2.0",
+    "Babel": "^0.0.1",
+    "babel-jest": "^28.1.0",
+    "babel-polyfill": "^6.26.0",
+    "eslint": "^8.16.0",
+    "jest": "^28.1.0",
+    "jest-environment-jsdom": "^28.1.0"
   },
   "eslintConfig": {
     "env": {
       "es2022": true,
       "browser": true,
-      "node": true
+      "node": true,
+      "jest": true
     },
     "parserOptions": {
       "sourceType": "module",
@@ -44,6 +54,32 @@
     ],
     "ignorePatterns": [
       "node_modules"
+    ]
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js"
+    ],
+    "testTimeout": 10000,
+    "maxWorkers": "80%",
+    "transform": {
+      "\\.[jt]sx?$": [
+        "babel-jest"
+      ]
+    },
+    "testEnvironment": "jest-environment-jsdom",
+    "testRegex": ".*.test.js$",
+    "setupFilesAfterEnv": [
+      "<rootDir>/test/setup-tests.js"
+    ],
+    "rootDir": "./",
+    "transformIgnorePatterns": [
+      "<rootDir>/node_modules/"
     ]
   }
 }
