@@ -1,8 +1,8 @@
 const APIURL = "https://api.github.com/users/";
 
-const main = document.getElementById("main");
-const form = document.getElementById("form");
-const search = document.getElementById("search");
+const main = document.querySelector("#main");
+const form = document.querySelector("#form");
+const search = document.querySelector("#search");
 
 async function getUser(username) {
   try {
@@ -10,8 +10,8 @@ async function getUser(username) {
 
     createUserCard(data);
     getRepos(username);
-  } catch (err) {
-    if (err.response.status === 404) {
+  } catch (error) {
+    if (error.response.status === 404) {
       createErrorCard("No profile with this username");
     }
   }
@@ -22,7 +22,7 @@ async function getRepos(username) {
     const { data } = await axios.get(APIURL + username + "/repos?sort=created");
 
     addReposToCard(data);
-  } catch (err) {
+  } catch {
     createErrorCard("Problem fetching repos");
   }
 }
@@ -48,10 +48,10 @@ function createUserCard(user) {
   main.innerHTML = cardHTML;
 }
 
-function createErrorCard(msg) {
+function createErrorCard(message) {
   const cardHTML = `
         <div class="card">
-            <h1>${msg}</h1>
+            <h1>${message}</h1>
         </div>
     `;
 
@@ -59,17 +59,17 @@ function createErrorCard(msg) {
 }
 
 function addReposToCard(repos) {
-  const reposEl = document.getElementById("repos");
+  const reposElement = document.querySelector("#repos");
 
-  repos.slice(0, 10).forEach((repo) => {
-    const repoEl = document.createElement("a");
-    repoEl.classList.add("repo");
-    repoEl.href = repo.html_url;
-    repoEl.target = "_blank";
-    repoEl.innerText = repo.name;
+  for (const repo of repos.slice(0, 10)) {
+    const repoElement = document.createElement("a");
+    repoElement.classList.add("repo");
+    repoElement.href = repo.html_url;
+    repoElement.target = "_blank";
+    repoElement.innerText = repo.name;
 
-    reposEl.appendChild(repoEl);
-  });
+    reposElement.append(repoElement);
+  }
 }
 
 form.addEventListener("submit", (e) => {

@@ -1,10 +1,10 @@
 const counters = document.querySelectorAll(".counter");
 
-counters.forEach((counter) => {
+for (const counter of counters) {
   counter.innerText = "0";
 
   const updateCounter = () => {
-    const target = +counter.getAttribute("data-target");
+    const target = +counter.dataset.target;
     const c = +counter.innerText;
 
     const increment = target / 300;
@@ -18,4 +18,4 @@ counters.forEach((counter) => {
   };
 
   updateCounter();
-});
+}

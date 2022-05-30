@@ -1,9 +1,9 @@
-const hourEl = document.querySelector(".hour");
-const minuteEl = document.querySelector(".minute");
-const secondEl = document.querySelector(".second");
-const timeEl = document.querySelector(".time");
-const dateEl = document.querySelector(".date");
-const toggleEl = document.querySelector(".toggle");
+const hourElement = document.querySelector(".hour");
+const minuteElement = document.querySelector(".minute");
+const secondElement = document.querySelector(".second");
+const timeElement = document.querySelector(".time");
+const dateElement = document.querySelector(".date");
+const toggleElement = document.querySelector(".toggle");
 
 const days = [
   "Sunday",
@@ -29,7 +29,7 @@ const months = [
   "Dec",
 ];
 
-toggleEl.addEventListener("click", (e) => {
+toggleElement.addEventListener("click", (e) => {
   const html = document.querySelector("html");
 
   if (html.classList.contains("dark")) {
@@ -41,8 +41,8 @@ toggleEl.addEventListener("click", (e) => {
   }
 });
 
-const scale = (num, in_min, in_max, out_min, out_max) => {
-  return ((num - in_min) * (out_max - out_min)) / in_max - in_min + out_min;
+const scale = (number_, in_min, in_max, out_min, out_max) => {
+  return ((number_ - in_min) * (out_max - out_min)) / in_max - in_min + out_min;
 };
 
 function setTime() {
@@ -55,7 +55,7 @@ function setTime() {
   const minutes = time.getMinutes();
   const seconds = time.getSeconds();
 
-  hourEl.style.transform = `translate(-50%, -100%) rotate(${scale(
+  hourElement.style.transform = `translate(-50%, -100%) rotate(${scale(
     hoursForClock,
     0,
     11,
@@ -63,7 +63,7 @@ function setTime() {
     360
   )}deg)`;
 
-  minuteEl.style.transform = `translate(-50%, -100%) rotate(${scale(
+  minuteElement.style.transform = `translate(-50%, -100%) rotate(${scale(
     minutes,
     0,
     59,
@@ -71,7 +71,7 @@ function setTime() {
     360
   )}deg)`;
 
-  secondEl.style.transform = `translate(-50%, -100%) rotate(${scale(
+  secondElement.style.transform = `translate(-50%, -100%) rotate(${scale(
     seconds,
     0,
     59,
@@ -79,8 +79,8 @@ function setTime() {
     360
   )}deg)`;
 
-  timeEl.innerHTML = `${hours}:${minutes < 10 ? `0${minutes}` : minutes}`;
-  dateEl.innerHTML = `${days[day]}, ${months[month]} <span class="circle">${date}</span>`;
+  timeElement.innerHTML = `${hours}:${minutes < 10 ? `0${minutes}` : minutes}`;
+  dateElement.innerHTML = `${days[day]}, ${months[month]} <span class="circle">${date}</span>`;
 }
 
 setTime();

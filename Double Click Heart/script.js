@@ -1,4 +1,4 @@
-const times = document.getElementById("times");
+const times = document.querySelector("#times");
 const loveMe = document.querySelector(".loveMe");
 
 let timesClicked = 0;
@@ -21,7 +21,7 @@ function createHeart(e) {
   heart.style.top = `${yInside}px`;
   heart.style.left = `${xInside}px`;
 
-  loveMe.appendChild(heart);
+  loveMe.append(heart);
   setTimeout(() => heart.remove(), 1000);
 
   times.innerHTML = ++timesClicked;

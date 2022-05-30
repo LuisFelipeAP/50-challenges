@@ -7,9 +7,9 @@ const SEARCH_API =
   'https://api.themoviedb.org/3/search/movie?api_key=43fb350c982be4f8284733351d0ddfab&query="';
 getMovies(API_URL);
 
-const main = document.getElementById("main");
-const form = document.getElementById("form");
-const search = document.getElementById("search");
+const main = document.querySelector("#main");
+const form = document.querySelector("#form");
+const search = document.querySelector("#search");
 
 async function getMovies(url) {
   const res = await fetch(url);
@@ -21,12 +21,12 @@ async function getMovies(url) {
 function showMovies(movies) {
   main.innerHTML = "";
 
-  movies.forEach((movie) => {
+  for (const movie of movies) {
     const { title, poster_path, vote_average, overview } = movie;
 
-    const movieEl = document.createElement("div");
-    movieEl.classList.add("movie");
-    movieEl.innerHTML = `
+    const movieElement = document.createElement("div");
+    movieElement.classList.add("movie");
+    movieElement.innerHTML = `
         <img src="${IMG_PATH + poster_path}" alt="${title}" />
         <div class="movie-info">
             <h3>${title}</h3>
@@ -37,8 +37,8 @@ function showMovies(movies) {
             ${overview}
         </div>
         `;
-    main.appendChild(movieEl);
-  });
+    main.append(movieElement);
+  }
 }
 
 function getClassByRate(vote) {

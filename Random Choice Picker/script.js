@@ -1,5 +1,5 @@
-const tagsEl = document.getElementById("tags");
-const textarea = document.getElementById("textarea");
+const tagsElement = document.querySelector("#tags");
+const textarea = document.querySelector("#textarea");
 
 textarea.focus();
 
@@ -45,15 +45,15 @@ function createTags(input) {
     .filter((tag) => tag.trim() !== "")
     .map((tag) => tag.trim());
 
-  tagsEl.innerHTML = "";
+  tagsElement.innerHTML = "";
 
-  tags.forEach((tag) => {
-    const tagEl = document.createElement("span");
-    tagEl.classList.add("tag");
+  for (const tag of tags) {
+    const tagElement = document.createElement("span");
+    tagElement.classList.add("tag");
 
-    tagEl.innerText = tag;
-    tagsEl.appendChild(tagEl);
-  });
+    tagElement.innerText = tag;
+    tagsElement.append(tagElement);
+  }
 }
 
 function pickRandomTag() {

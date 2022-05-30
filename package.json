@@ -1,0 +1,49 @@
+{
+  "name": "50days",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LuisFelipeAP/50-challenges.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LuisFelipeAP/50-challenges/issues"
+  },
+  "homepage": "https://github.com/LuisFelipeAP/50-challenges#readme",
+  "dependencies": {
+    "eslint-plugin-unicorn": "^42.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.16.0"
+  },
+  "eslintConfig": {
+    "env": {
+      "es2022": true,
+      "browser": true,
+      "node": true
+    },
+    "parserOptions": {
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "impliedStrict": true
+      },
+      "ecmaVersion": "latest"
+    },
+    "plugins": [
+      "unicorn"
+    ],
+    "extends": [
+      "eslint:recommended",
+      "plugin:unicorn/recommended"
+    ],
+    "ignorePatterns": [
+      "node_modules"
+    ]
+  }
+}

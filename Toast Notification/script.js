@@ -1,5 +1,5 @@
-const button = document.getElementById("button");
-const toasts = document.getElementById("toasts");
+const button = document.querySelector("#button");
+const toasts = document.querySelector("#toasts");
 
 const messages = [
   "Message One",
@@ -25,7 +25,7 @@ function createNotification(message = null, type = null) {
 
   notif.innerText = message ? message : getRandomMessage();
 
-  toasts.appendChild(notif);
+  toasts.append(notif);
 
   setTimeout(() => {
     notif.remove();

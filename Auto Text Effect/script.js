@@ -1,23 +1,23 @@
-const textEl = document.getElementById("text");
-const speedEl = document.getElementById("speed");
+const textElement = document.querySelector("#text");
+const speedElement = document.querySelector("#speed");
 
 const text = "We Love Programming!";
 
-let idx = 1;
-let speed = 300 / speedEl.value;
+let index = 1;
+let speed = 300 / speedElement.value;
 
 writeText();
 
 function writeText() {
-  textEl.innerHTML = text.slice(0, idx);
-  idx++;
-  if (idx > text.length) {
-    idx = 1;
+  textElement.innerHTML = text.slice(0, index);
+  index++;
+  if (index > text.length) {
+    index = 1;
   }
 
   setTimeout(writeText, speed);
 }
 
-speedEl.addEventListener("input", (e) => {
+speedElement.addEventListener("input", (e) => {
   speed = 300 / e.target.value;
 });

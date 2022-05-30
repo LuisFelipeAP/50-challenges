@@ -1,11 +1,10 @@
 const labels = document.querySelectorAll(".form-control label");
 
-labels.forEach((label) => {
-  label.innerHTML = label.innerText
-    .split("")
+for (const label of labels) {
+  label.innerHTML = [...label.textContent]
     .map(
-      (letter, idx) =>
-        `<span style="transition-delay:${idx * 50}ms;">${letter}</span>`
+      (letter, index) =>
+        `<span style="transition-delay:${index * 50}ms;">${letter}</span>`
     )
     .join("");
 
@@ -25,4 +24,4 @@ labels.forEach((label) => {
       textInput.focus();
     }
   });
-});
+}

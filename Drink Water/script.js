@@ -1,29 +1,29 @@
 const smallCups = document.querySelectorAll(".cup-small");
-const liters = document.getElementById("liters");
-const percentage = document.getElementById("percentage");
-const remained = document.getElementById("remained");
+const liters = document.querySelector("#liters");
+const percentage = document.querySelector("#percentage");
+const remained = document.querySelector("#remained");
 
 updateBigCup();
 
-smallCups.forEach((cup, idx) => {
-  cup.addEventListener("click", () => highlightCups(idx));
-});
+for (const [index, cup] of smallCups.entries()) {
+  cup.addEventListener("click", () => highlightCups(index));
+}
 
-function highlightCups(idx) {
+function highlightCups(index) {
   if (
-    smallCups[idx].classList.contains("full") &&
-    !smallCups[idx].nextElementSibling.classList.contains("full")
+    smallCups[index].classList.contains("full") &&
+    !smallCups[index].nextElementSibling.classList.contains("full")
   ) {
-    idx--;
+    index--;
   }
 
-  smallCups.forEach((cup, idx2) => {
-    if (idx2 <= idx) {
+  for (const [index2, cup] of smallCups.entries()) {
+    if (index2 <= index) {
       cup.classList.add("full");
     } else {
       cup.classList.remove("full");
     }
-  });
+  }
 
   updateBigCup();
 }

@@ -1,44 +1,44 @@
-const resultEl = document.getElementById("result");
-const lengthEl = document.getElementById("length");
-const uppercaseEl = document.getElementById("uppercase");
-const lowercaseEl = document.getElementById("lowercase");
-const numbersEl = document.getElementById("numbers");
-const symbolsEl = document.getElementById("symbols");
-const generateEl = document.getElementById("generate");
-const clipboardEl = document.getElementById("clipboard");
+const resultElement = document.querySelector("#result");
+const lengthElement = document.querySelector("#length");
+const uppercaseElement = document.querySelector("#uppercase");
+const lowercaseElement = document.querySelector("#lowercase");
+const numbersElement = document.querySelector("#numbers");
+const symbolsElement = document.querySelector("#symbols");
+const generateElement = document.querySelector("#generate");
+const clipboardElement = document.querySelector("#clipboard");
 
-const randomFunc = {
+const randomFunction = {
   upper: getRandomUpper,
   lower: getRandomLower,
   number: getRandomNumber,
   symbol: getRandomSymbol,
 };
 
-clipboardEl.addEventListener("click", () => {
+clipboardElement.addEventListener("click", () => {
   const textarea = document.createElement("textarea");
-  const password = resultEl.innerText;
+  const password = resultElement.innerText;
 
   if (!password) {
     return;
   }
 
   textarea.value = password;
-  document.body.appendChild(textarea);
+  document.body.append(textarea);
   textarea.select();
   document.execCommand("copy");
   textarea.remove();
-  resultEl.innerText = "";
+  resultElement.innerText = "";
   alert("Password has been copied to the clipboard!");
 });
 
-generateEl.addEventListener("click", () => {
-  const length = +lengthEl.value;
-  const hasLower = lowercaseEl.checked;
-  const hasUpper = uppercaseEl.checked;
-  const hasNumbers = numbersEl.checked;
-  const hasSymbols = symbolsEl.checked;
+generateElement.addEventListener("click", () => {
+  const length = +lengthElement.value;
+  const hasLower = lowercaseElement.checked;
+  const hasUpper = uppercaseElement.checked;
+  const hasNumbers = numbersElement.checked;
+  const hasSymbols = symbolsElement.checked;
 
-  resultEl.innerText = generatePassword(
+  resultElement.innerText = generatePassword(
     hasLower,
     hasUpper,
     hasNumbers,
@@ -58,11 +58,11 @@ function generatePassword(lower, upper, number, symbol, length) {
     return "";
   }
 
-  for (let i = 0; i < length; i += typesCount) {
-    typesArray.forEach((type) => {
-      const funcName = Object.keys(type)[0];
-      generatedPassword += randomFunc[funcName]();
-    });
+  for (let index = 0; index < length; index += typesCount) {
+    for (const type of typesArray) {
+      const functionName = Object.keys(type)[0];
+      generatedPassword += randomFunction[functionName]();
+    }
   }
 
   const finalPassword = generatedPassword.slice(0, length);

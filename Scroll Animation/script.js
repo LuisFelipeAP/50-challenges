@@ -7,7 +7,7 @@ checkBoxes();
 function checkBoxes() {
   const triggerBottom = (window.innerHeight / 5) * 4;
 
-  boxes.forEach((box) => {
+  for (const box of boxes) {
     const boxTop = box.getBoundingClientRect().top;
 
     if (boxTop < triggerBottom) {
@@ -15,5 +15,5 @@ function checkBoxes() {
     } else {
       box.classList.remove("show");
     }
-  });
+  }
 }

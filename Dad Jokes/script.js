@@ -1,7 +1,7 @@
-const jokeEl = document.getElementById("joke");
-const jokeBtn = document.getElementById("jokeBtn");
+const jokeElement = document.querySelector("#joke");
+const jokeButton = document.querySelector("#jokeBtn");
 
-jokeBtn.addEventListener("click", generateJoke);
+jokeButton.addEventListener("click", generateJoke);
 
 generateJoke();
 
@@ -14,5 +14,5 @@ async function generateJoke() {
 
   const data = await res.json();
 
-  jokeEl.innerHTML = data.joke;
+  jokeElement.innerHTML = data.joke;
 }

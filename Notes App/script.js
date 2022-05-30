@@ -1,12 +1,12 @@
-const addBtn = document.getElementById("add");
+const addButton = document.querySelector("#add");
 
 const notes = JSON.parse(localStorage.getItem("notes"));
 
 if (notes) {
-  notes.forEach((note) => addNewNote(note));
+  for (const note of notes)  addNewNote(note);
 }
 
-addBtn.addEventListener("click", () => {
+addButton.addEventListener("click", () => {
   addNewNote();
   const textArea = document.querySelector("textarea");
   textArea.focus();
@@ -27,40 +27,40 @@ function addNewNote(text = "") {
     <div class="save">Save</div>
     `;
 
-  const editBtn = note.querySelector(".edit");
-  const deleteBtn = note.querySelector(".delete");
+  const editButton = note.querySelector(".edit");
+  const deleteButton = note.querySelector(".delete");
   const main = note.querySelector(".main");
   const textArea = note.querySelector("textarea");
-  const saveEl = note.querySelector(".save");
+  const saveElement = note.querySelector(".save");
 
   textArea.value = text;
   main.innerHTML = text;
 
-  deleteBtn.addEventListener("click", () => {
+  deleteButton.addEventListener("click", () => {
     note.remove();
 
     updateLS();
   });
 
-  editBtn.addEventListener("click", () => {
+  editButton.addEventListener("click", () => {
     main.classList.toggle("hidden");
     textArea.classList.toggle("hidden");
     textArea.focus();
-    saveEl.classList.toggle("hidden");
+    saveElement.classList.toggle("hidden");
   });
 
-  saveEl.addEventListener("click", () => {
+  saveElement.addEventListener("click", () => {
     main.classList.toggle("hidden");
     textArea.classList.toggle("hidden");
     textArea.focus();
-    saveEl.classList.toggle("hidden");
+    saveElement.classList.toggle("hidden");
   });
 
   note.addEventListener("click", () => {
     main.classList.toggle("hidden");
     textArea.classList.toggle("hidden");
     textArea.focus();
-    saveEl.classList.toggle("hidden");
+    saveElement.classList.toggle("hidden");
   });
 
   textArea.addEventListener("keydown", (e) => {
@@ -68,7 +68,7 @@ function addNewNote(text = "") {
       main.classList.toggle("hidden");
       textArea.classList.toggle("hidden");
       textArea.focus();
-      saveEl.classList.toggle("hidden");
+      saveElement.classList.toggle("hidden");
     }
   });
 
@@ -81,17 +81,17 @@ function addNewNote(text = "") {
 
   if (textArea.hasFocus) {
     console.log(123);
-    saveEl.classList.toggle("hidden");
+    saveElement.classList.toggle("hidden");
   }
 
-  document.body.appendChild(note);
+  document.body.append(note);
 }
 
 function updateLS() {
   const notesText = document.querySelectorAll("textarea");
   const notes = [];
 
-  notesText.forEach((note) => notes.push(note.value));
+  for (const note of notesText)  notes.push(note.value);
 
   localStorage.setItem("notes", JSON.stringify(notes));
 }

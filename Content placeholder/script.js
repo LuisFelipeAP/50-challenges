@@ -1,9 +1,9 @@
-const header = document.getElementById("header");
-const title = document.getElementById("title");
-const excerpt = document.getElementById("excerpt");
-const profile_img = document.getElementById("profile_img");
-const name = document.getElementById("name");
-const date = document.getElementById("date");
+const header = document.querySelector("#header");
+const title = document.querySelector("#title");
+const excerpt = document.querySelector("#excerpt");
+const profile_img = document.querySelector("#profile_img");
+const name = document.querySelector("#name");
+const date = document.querySelector("#date");
 
 const animated_bgs = document.querySelectorAll(".animated-bg");
 const animated_bg_texts = document.querySelectorAll(".animated-bg-text");
@@ -26,6 +26,6 @@ function getData() {
   profile_img.innerHTML = `${profileImgCnt}`;
   name.innerHTML = `${nameCnt}`;
   date.innerHTML = `${dateCnt}`;
-  animated_bgs.forEach((bg) => bg.classList.remove("animated-bg"));
-  animated_bg_texts.forEach((bg) => bg.classList.remove("animated-bg-text"));
+  for (const bg of animated_bgs)  bg.classList.remove("animated-bg");
+  for (const bg of animated_bg_texts)  bg.classList.remove("animated-bg-text");
 }
